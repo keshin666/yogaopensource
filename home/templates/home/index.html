@@ -1,0 +1,9 @@
+{% if announcements %}
+    <ul>
+    {% for announcement in announcements %}
+        <li>{{ announcement.text }}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No Announcements.</p>
+{% endif %}
