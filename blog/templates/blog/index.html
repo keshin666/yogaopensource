@@ -1,3 +1,5 @@
+{% extends 'base.html' %}
+{% block content %}
 {% if blog_entries %}
     <ul>
     {% for blog_entry in blog_entries %}
@@ -7,3 +9,4 @@
 {% else %}
     <p>No blog entries are available.</p>
 {% endif %}
+{% endblock content %}

@@ -1,3 +1,5 @@
+{% extends 'base.html' %}
+{% block content %}
 {% if announcements %}
     <ul>
     {% for announcement in announcements %}
@@ -14,3 +16,4 @@
 {% else %}
     <p>No Announcements.</p>
 {% endif %}
+{% endblock content %}
