@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+{% if blog_entry %}
+    <ul>
+        <li><span class="blog_title">{{ blog_entry.title }}</span></li>
+        <li>{{ blog_entry.text }}</li>
+    </ul>
+{% else %}
+    <p>No blog entry content is available.</p>
+{% endif %}
+{% endblock content %}

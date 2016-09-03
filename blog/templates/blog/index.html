@@ -1,11 +1,15 @@
 {% extends 'base.html' %}
 {% block content %}
 {% if blog_entries %}
-    <ul>
     {% for blog_entry in blog_entries %}
-        <li><a href="{% url 'blog:blog_entry' blog_entry.id %}"> {{ blog_entry.title }}</a></li>
+        <a href="{% url 'blog:blog_entry' blog_entry.id %}">
+            <div class="blog_preview">
+                <span class="blog_title_preview"> {{ blog_entry.title }} </span> <br>
+                <span class="blog_text_preview"> {{ blog_entry.get_text_preview }}
+            </div>
+        </a>
     {% endfor %}
-    </ul>
+    <div style="clear: both"></div>
 {% else %}
     <p>No blog entries are available.</p>
 {% endif %}

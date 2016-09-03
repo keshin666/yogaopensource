@@ -11,11 +11,19 @@
                 <meta http-equiv="Content-Language" value="en-US" />
                 <meta name="viewport"
                       content="width=device-width, initial-scale=1.0">
-                <link href="{{ STATIC_URL }}css/app.css"
-                      rel="stylesheet" media="screen">
+                {% load static %}
+                <link rel="stylesheet" type="text/css" href="{% static 'home/css_reset.css' %}" />
+                <link rel="stylesheet" type="text/css" href="{% static 'home/style.css' %}" />
+                <!-- <link href="{{ STATIC_URL }}css/app.css"
+                      rel="stylesheet" media="screen"> -->
     </head>
     <body>
-      [Navigation ]
+      <div id="navigation">
+        <a href="/">Home</a>
+        <a href="/blog">Blog</a>
+      </div>
+      <div id="content">
       {% block content %} content {% endblock content %}
+      </div>
     </body>
 </html>

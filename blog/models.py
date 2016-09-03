@@ -12,3 +12,7 @@ class BlogEntry(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_text_preview(self):
+        text = self.text
+        return text[:255 if len(text) > 255 else len(text)] + '...'

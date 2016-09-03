@@ -17,4 +17,8 @@ def index(request):
 
 def view_blog_entry(request, blog_entry_id):
     blog_entry = get_object_or_404(BlogEntry, pk=blog_entry_id)
-    return HttpResponse(blog_entry.text)
+    template = loader.get_template('blog/blog_entry.html')
+    context = RequestContext(request, {
+        'blog_entry': blog_entry,
+        })
+    return HttpResponse(template.render(context))
