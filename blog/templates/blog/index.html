@@ -1,10 +1,16 @@
 {% extends 'base.html' %}
+
+{% block sidebar %}
+<a href="#">unknown</a>
+{% endblock sidebar %}
+
 {% block content %}
 {% if blog_entries %}
     {% for blog_entry in blog_entries %}
         <a href="{% url 'blog:blog_entry' blog_entry.id %}">
             <div class="blog_preview">
-                <span class="blog_title_preview"> {{ blog_entry.title }} </span> <br>
+                <span class="blog_title_preview"> {{ blog_entry.get_title_preview }} </span> <br>
+                <span class="blog_date_preview"> {{ blog_entry.date }} </span> <br>
                 <span class="blog_text_preview"> {{ blog_entry.get_text_preview }}
             </div>
         </a>

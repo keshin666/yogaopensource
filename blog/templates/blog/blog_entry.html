@@ -3,6 +3,7 @@
 {% if blog_entry %}
     <ul>
         <li><span class="blog_title">{{ blog_entry.title }}</span></li>
+        <li><span style="display: block; text-align: right; padding-right: 20px"> {{ blog_entry.date }} </span></li>
         <li>{{ blog_entry.text }}</li>
     </ul>
 {% else %}

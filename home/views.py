@@ -10,7 +10,7 @@ from blog.models import BlogEntry
 def index(request):
     announcements = Announcement.objects.filter(
         expiry_date__gte=datetime.date.today())
-    blog_entries = BlogEntry.objects.order_by('-date')
+    blog_entries = BlogEntry.objects.order_by('-date')[:2]
     template = loader.get_template('home/index.html')
     context = RequestContext(request, {
         'announcements': announcements,

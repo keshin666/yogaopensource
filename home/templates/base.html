@@ -14,16 +14,24 @@
                 {% load static %}
                 <link rel="stylesheet" type="text/css" href="{% static 'home/css_reset.css' %}" />
                 <link rel="stylesheet" type="text/css" href="{% static 'home/style.css' %}" />
-                <!-- <link href="{{ STATIC_URL }}css/app.css"
-                      rel="stylesheet" media="screen"> -->
     </head>
     <body>
       <div id="navigation">
         <a href="/">Home</a>
+        <a href="/yogaunterricht"> Yoga-Unterricht </a>
+        <a href="/ashtangayoga"> Ashtanga Yoga </a>
         <a href="/blog">Blog</a>
       </div>
+      <div id="sidebar">
+      {% block sidebar %}
+      <!-- should be no content seen here, not
+       even a sidebar if not specified-->
+      {% endblock sidebar %}
+      </div>
       <div id="content">
-      {% block content %} content {% endblock content %}
+      {% block content %}
+      If you see this there is no content specified
+      {% endblock content %}
       </div>
     </body>
 </html>
