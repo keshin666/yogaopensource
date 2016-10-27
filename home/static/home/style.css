@@ -64,6 +64,7 @@ body {
     padding: 10px;
     word-wrap: break-word;
     float: left;
+    margin-bottom: 10px;
 }
 
 .blog_preview a {
