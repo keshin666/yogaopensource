@@ -22,16 +22,18 @@
         <a href="/ashtangayoga">Ashtanga Yoga</a>
         <a href="/blog">Artikel</a>
       </div>
-      <div id="sidebar">
-      {% block sidebar %}
-      <!-- should be no content seen here, not
-       even a sidebar if not specified-->
-      {% endblock sidebar %}
-      </div>
-      <div id="content">
-      {% block content %}
-      If you see this there is no content specified
-      {% endblock content %}
+      <div id="mainblock">
+        <div id="sidebar">
+        {% block sidebar %}
+        <!-- should be no content seen here, not
+         even a sidebar if not specified-->
+        {% endblock sidebar %}
+        </div>
+        <div id="content">
+        {% block content %}
+        If you see this there is no content specified
+        {% endblock content %}
+        </div>
       </div>
     </body>
 </html>
