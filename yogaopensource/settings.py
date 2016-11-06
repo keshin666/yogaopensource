@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'home',
     'ashtangayoga',
     'yogaunterricht',
+    'django_markdown',
+    'pagedown',
 ]
 
 MIDDLEWARE_CLASSES = [

@@ -1,75 +1,40 @@
 {% extends 'base.html' %}
 {% block title %} Home {% endblock %}
 {% block sidebar %}
-    <a href="#introduction">Start</a><br>
-    <a href="#announcements">Ankündigungen</a><br>
-    <a href="#next_events">Nächste Termine</a><br>
-    <a href="#blog_examples">Artikel</a><br>
+    {% for sidebar_choice in sidebar_choices %}
+        <a href="#{{ sidebar_choice.anchor }}">{{ sidebar_choice.text | safe }}</a><br>
+    {% endfor %}
 {% endblock sidebar %}
 {% block content %}
-<span id="introduction" id="introduction"> Sei sehr herzlich willkommen.<br>
-Auf dieser Seite findest Du Informationen über 
-<!--Yoga für Menschen, die konsum- und gesellschaftskritisch denken und sich 
-politisch engagieren. <br>-->
-Weil es an Raum fehlt, eigenständig und unabhängig Yoga zu üben und sich 
-darüber auszutauschen, haben wir in Hamburg eine regelmäßig übende Gruppe.  
-Über das Angebot und die Termine findest Du <a href="/yogaunterricht">hier</a> 
-ausührliche Informationen. <br>
-Außerdem existiert diese Webseite, um Yoga Menschen näher zu bringen, die sich 
-vom Mainstream-Yogaangebot nicht angesprochen fühlen.  Das bedeutet, wir 
-richten uns an jede_n, vor allem aber an Menschen, die sich aufgrund von 
-Diskriminierung, Leistungsdruck, Chancenungleichheit und Beschleunigung im 
-normalen Yoga nicht aufgehoben fühlen.  Yoga soll uns Kraft, Ausdauer, 
-Gesundheit und Fähigkeiten liefern, um politisches Engagement zu ermöglichen.  
-Wir sehen Yoga nicht als ein Set von Übungen, das uns hilft, die alltägliche 
-<i>Lohnarbeit</i> zu meistern und friedlich konform mit Staat, Ungerechtigkeit 
-und ggf. Repression leben zu können.  Stattdessen beschäftigen wir uns mit der 
-<i>wirklichen</i> Welt und sehen Yoga auch im Kontext politischer Bewegung und 
-als unterstützende Praxis für Menschen, die sich mit politischer Unterdrückung 
-konfrontiert sehen.  Wir sind darum bemüht, Yoga in allen Dimensionen 
-barrierefrei zugänglich zu machen*. <br>
-* ja, ich weiß, dass uns das bisher noch gar nicht gelungen ist. <br>
-Stöber ein bisschen auf dieser Seite, um mehr zu erfahren. <br>
-</span>
-<br>
-<br>
-<br>
-<br>
-<br>
-<span class="general_title", id="announcements">Ankündigungen</span>
+    {% for content_text in content_texts %}
+        <span class="anchor" id="#{{ content_text.anchor }}"></span>
+        <span class="general_title">{{ content_text.title }}</span>
+        {{ content_text.render_text_markdown | safe}}
+    {% endfor %}
+<span class="anchor", id="announcements"></span>
+<span class="general_title">Ankündigungen</span>
 <div class="announcements_frame">
     {% if announcements %}
-        <ul>
         {% for announcement in announcements %}
-            <li>{{ announcement.text }}</li>
+            {{ announcement.render_text_markdown | safe }}
         {% endfor %}
-        </ul>
-        <br>
-        <br>
     {% else %}
         <p>No Announcements.</p>
     {% endif %}
 </div>
-<br>
-<br>
-<br>
-<br>
-<span class="general_title" id="next_events">Regelmäßige Yogastunden</span>  (angeleitet und selbstständig, Stand: 15.10.2016)
+<span class="anchor" id="next_events"></span>
+<span class="general_title" >Regelmäßige Yogastunden</span>  (angeleitet und selbstständig, Stand: 15.10.2016)
 <div class="class_overview_frame">
 </div>
-<br>
-<br>
-<br>
-<br>
-<br>
-<span class="general_title" id="blog_examples">Artikel im Blog</span>
+<span class="anchor" id="blog_examples"></span>
+<span class="general_title">Artikel im Blog</span>
 <ul>
     {% for blog_entry in blog_entries %}
         <a href="{% url 'blog:blog_entry' blog_entry.id %}">
             <div class="blog_preview">
                 <span class="blog_title_preview"> {{ blog_entry.get_title_preview }} </span> <br>
-                <span class="blog_date_preview"> {{ blog_entry.date }} </span> <br>
-                <span class="blog_text_preview"> {{ blog_entry.get_text_preview }}
+                <span class="blog_date_preview"> {{ blog_entry.created_date }} </span> <br>
+                <span class="blog_text_preview"> {{ blog_entry.get_text_preview_md | safe }}
             </div>
         </a>
     {% endfor %}

@@ -1,13 +1,14 @@
 {% extends 'base.html' %}
 {% block title %}Yogastunden in Hamburg{% endblock title %}
 {% block sidebar %}
-    <a href="#background">Hintergrund</a><br>
-    <a href="#teaching_style">Lernmethoden</a><br>
-    <a href="#schedule">Terminplan</a><br>
-    <a href="#instructor">Wer zeigt Dir das?</a><br>
-    <a href="#questions_answers">Fragen/Antworten</a><br>
-    <a href="#contact">Kontakt</a><br>
+    {% for sidebar_choice in sidebar_choices %}
+        <a href="#{{ sidebar_choice.anchor }}">{{ sidebar_choice.text }}</a><br>
+    {% endfor %}
 {% endblock sidebar %}
 {% block content %}
-Hier findest Du den Unterrichtsinhalt, sobald welcher da ist.
+    {% for content_text in content_texts %}
+        <span class="anchor" id="#{{ content_text.anchor }}"></span>
+        <span class="general_title">{{ content_text.title }}</span>
+        {{ content_text.render_text_markdown | safe }}
+    {% endfor %}
 {% endblock content %}

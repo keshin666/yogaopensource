@@ -32,20 +32,25 @@
 #navigation a:active {
     background-color: #06D6A0;
 }
+.anchor {
+    display: block;
+    height: 65px; /*same height as header*/
+    margin-top: -65px; /*same height as header*/
+    background-color: #000000;
+    width: 100px;
+    visibility: hidden;
+}
 body {
     background-color: none;
     text-align: left;
     font-family: helvetica;
 }
 
-#introduction {
-    line-height: 150%;
-}
-
 .general_title {
     font-size: 22px;
-    padding: 2px;
+    padding: 4px;
     margin: 8px;
+    margin-left: 0px;
     margin-top: 20px;
     border-left-style: solid;
     border-left-width: 4px;
@@ -54,14 +59,53 @@ body {
 
 #content{
     padding: 10px;
-    width: 850px;
+    max-width: 700px;
     height: 100%;
     position: relative;
     background-color: #FFFFFF;
     margin: auto;
-    margin-top: 110px;
+    top: 110px;
     word-wrap: break-word;
 }
+
+#sidebar{
+    margin-right: 10px;
+    top: 110px;
+    position: fixed;
+    background-color: #06D6A0;
+    padding: 10px;
+    border-radius: 10px;
+    line-height: 250%;
+    width: 150px;
+    max-height: 500px;
+    -webkit-animation: fadein 1s;
+    /* Safari, Chrome and Opera > 12.1 */
+    /*transition: max-height 0.25s ease-in;*/
+}
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadein {
+    from { max-height: 0;
+           line-height: 0%;}
+    to   { max-height: 800px;
+           line-height: 250%;}
+}
+
+#sidebar a {
+    border-left-style: solid;
+    border-left-width: 3px;
+    border-left-color: #D0D1D1;
+    padding: 2px;
+}
+
+#sidebar a:hover {
+    background-color: #FFFFFF;
+    transition: all 0.2s ease-in;
+
+}
+#sidebar a:active {
+    background-color: #FFFFFF;
+}
+
 .blog_preview {
     width: 45%;
     height: 208px;
@@ -128,39 +172,3 @@ a:visited {
 
 }
 
-#sidebar{
-    float: left;
-    position: fixed;
-    background-color: #06D6A0;
-    padding: 10px;
-    border-radius: 10px;
-    line-height: 250%;
-    margin-left: 4px;
-    width: 150px;
-    max-height: 500px;
-    -webkit-animation: fadein 1s; /* Safari, Chrome and Opera > 12.1 */
-    /*transition: max-height 0.25s ease-in;*/
-}
-/* Safari, Chrome and Opera > 12.1 */
-@-webkit-keyframes fadein {
-    from { max-height: 0;
-           line-height: 0%;}
-    to   { max-height: 800px;
-           line-height: 250%;}
-}
-
-#sidebar a {
-    border-left-style: solid;
-    border-left-width: 3px;
-    border-left-color: #D0D1D1;
-    padding: 2px;
-}
-
-#sidebar a:hover {
-    background-color: #FFFFFF;
-    transition: all 0.2s ease-in;
-
-}
-#sidebar a:active {
-    background-color: #FFFFFF;
-}
