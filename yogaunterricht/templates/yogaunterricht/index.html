@@ -7,8 +7,10 @@
 {% endblock sidebar %}
 {% block content %}
     {% for content_text in content_texts %}
-        <span class="anchor" id="#{{ content_text.anchor }}"></span>
-        <span class="general_title">{{ content_text.title }}</span>
-        {{ content_text.render_text_markdown | safe }}
+        <div class="content_text">
+            <span class="anchor" id="{{ content_text.anchor }}"></span>
+            <span class="general_title">{{ content_text.title }}</span>
+            {{ content_text.render_text_markdown | safe }}
+        </div>
     {% endfor %}
 {% endblock content %}

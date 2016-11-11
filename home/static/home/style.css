@@ -34,12 +34,13 @@
 }
 .anchor {
     display: block;
-    height: 65px; /*same height as header*/
-    margin-top: -65px; /*same height as header*/
+    height: 65px;
+    margin-top: -65px;
     background-color: #000000;
     width: 100px;
     visibility: hidden;
 }
+
 body {
     background-color: none;
     text-align: left;
@@ -47,14 +48,19 @@ body {
 }
 
 .general_title {
-    font-size: 22px;
-    padding: 4px;
-    margin: 8px;
-    margin-left: 0px;
-    margin-top: 20px;
+    font-size: 32px;
+    font-weight: bold;
+    padding: 6px;
+    margin: 10px;
+    margin-left: 2px;
+    margin-top: 200px;
     border-left-style: solid;
     border-left-width: 4px;
     border-left-color: #06D6A0;
+/*    border-top-style: solid;
+    border-top-width: 4px;
+    border-top-color: #06D6A0;*/
+    line-height: 350%;
 }
 
 #content{
@@ -69,18 +75,20 @@ body {
 }
 
 #sidebar{
-    margin-right: 10px;
-    top: 110px;
-    position: fixed;
     background-color: #06D6A0;
     padding: 10px;
-    border-radius: 10px;
     line-height: 250%;
     width: 150px;
+    max-width: 150px;
     max-height: 500px;
+    float: left;
+    position: fixed;
+    top: 110px;
+    margin-left: -190px;
     -webkit-animation: fadein 1s;
     /* Safari, Chrome and Opera > 12.1 */
     /*transition: max-height 0.25s ease-in;*/
+    overflow: hidden;
 }
 /* Safari, Chrome and Opera > 12.1 */
 @-webkit-keyframes fadein {
@@ -108,13 +116,10 @@ body {
 
 .blog_preview {
     width: 45%;
-    height: 208px;
+    height: 250px;
     background-color: #06D6A0;
-    border-color: #54C6EB;
-    border-style: static;
-    border-radius: 10px;
-    margin: 10px;
-    padding: 10px;
+    padding: 8px;
+    margin: 8px;
     word-wrap: break-word;
     float: left;
 }
@@ -146,29 +151,44 @@ a:visited {
 }
 
 .announcements_frame {
-    height: 208px;
+    min-height: 208px;
     width: 90%;
     background-color: #06D6A0;
     word-wrap: break-word;
-    border-radius: 10px;
+    /*border-radius: 10px;*/
     padding: 5px;
     margin-top: 10px;
     margin-bottom: 10px;
-    margin-left:auto;
-    margin-right:auto;
-
+    margin-left: auto;
+    margin-right: auto;
 }
 .class_overview_frame {
     height: 208px;
     width: 90%;
     background-color: #06D6A0;
     word-wrap: break-word;
-    border-radius: 10px;
+    /*border-radius: 10px;*/
     padding: 5px;
     margin-top: 10px;
     margin-bottom: 10px;
     margin-left:auto;
     margin-right:auto;
-
 }
 
+table {
+    border-style: none;
+    border-width: 0;
+    background-color: #06D6A0;
+}
+
+th {
+    border-style: none;
+    border-bottom-style: dashed;
+    border-bottom-width: 2px;
+    border-bottom-color: #000000;
+    padding: 9px;
+}
+
+td {
+    padding: 9px;
+}

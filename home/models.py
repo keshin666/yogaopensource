@@ -37,10 +37,9 @@ class Text(models.Model):
     author = models.ForeignKey(User)
     additional_data = models.TextField(default=None, blank=True, null=True)
 
-
     def __str__(self):
         return (self.text_type
-                + ': ' 
+                + ': '
                 + self.title)
 
     def get_title_preview(self):
@@ -56,8 +55,12 @@ class Text(models.Model):
         return (markdown.markdown(text, safe_mode=True) if len(text) <= 160
                 else markdown.markdown(text[:160] + '...', safe_mode=True))
 
-
     def render_text_markdown(self):
-        return markdown.markdown(self.text,
-                                 safe_mode=True,
-                                 extensions=['markdown.extensions.nl2br'])
+        return markdown.markdown(
+            self.text,
+            safe_mode=True,
+            extensions=['markdown.extensions.nl2br',
+                        'markdown.extensions.tables',
+                        'markdown.extensions.sane_lists',
+                        'markdown.extensions.attr_list',
+                        'markdown.extensions.def_list'])

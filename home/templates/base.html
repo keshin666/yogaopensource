@@ -23,16 +23,19 @@
         <a href="/blog">Artikel</a>
       </div>
       <div id="mainblock">
-        <div id="sidebar">
-        {% block sidebar %}
-        <!-- should be no content seen here, not
-         even a sidebar if not specified-->
-        {% endblock sidebar %}
-        </div>
         <div id="content">
-        {% block content %}
-        If you see this there is no content specified
-        {% endblock content %}
+          <div id="sidebar">
+          {% block sidebar %}
+          <!-- should be no content seen here, not
+           even a sidebar if not specified-->
+          {% endblock sidebar %}
+          </div>
+          {% block content %}
+          If you see this there is no content specified
+          {% endblock content %}
+          <div class="bottom" style="text-align: center; margin-top: 2in;">
+            <a href="/impressum">Impressum</a>
+          </div>
         </div>
       </div>
     </body>

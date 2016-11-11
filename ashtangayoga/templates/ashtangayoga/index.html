@@ -1,21 +1,14 @@
 {% extends 'base.html' %}
 {% block title %}Ashtanga Yoga{% endblock title %}
 {% block sidebar %}
-<a href="#">Praxis</a> <br>
-<a href="#">Historisch</a> <br>
-<a href="#">Moderne</a> <br>
-<a href="#">Yoga Sutra</a> <br>
-<a href="#">Weitere Texte</a> <br>
-
+    {% for sidebar_choice in sidebar_choices %}
+        <a href="#{{ sidebar_choice.anchor }}">{{ sidebar_choice.text }}</a><br>
+    {% endfor %}
 {% endblock sidebar %}
 {% block content %}
-<div>
-Hier steht irgendwann einmal etwas über Ashtanga Vinyasa Yoga in Vergangenheit 
-und Gegenwart.  Zukunft wissen wir leider noch nicht. <br>
-</div>
-<span class="general_title">Praxis</span> <br>
-<span class="general_title">Historisch</span> <br>
-<span class="general_title">Moderne</span> <br>
-<span class="general_title">Yoga Sutra</span> <br>
-<span class="general_title">Weitere Texte</span> <br>
+    {% for content_text in content_texts %}
+        <span class="anchor" id="#{{ content_text.anchor }}"></span>
+        <span class="general_title">{{ content_text.title }}</span>
+        {{ content_text.render_text_markdown | safe }}
+    {% endfor %}
 {% endblock content %}
