@@ -30,8 +30,21 @@
     <span class="anchor" id="next_events"></span>
     <span class="general_title" >14-Tage-Übersicht</span> <br>
     <table>
+        <tr>
+            <th>Wochentag</th>
+            <th>Datum</th>
+            <th>Was?</th>
+        </tr>
     {% for day in upcoming_days %}
-        <tr>{{ day }} <br></tr>
+        <tr>
+            <td>{{ day.weekday }}</td>
+            <td>{{ day.date }} </td>
+            <td>
+                {% for event in day.events %}
+                    {{ event.name }}: {{ event.description }}
+                {% endfor %}
+            </td>
+        </tr>
     {% endfor %}
     </table>
 </div>

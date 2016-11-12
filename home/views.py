@@ -1,16 +1,16 @@
 from django.http import HttpResponse
 from django.template import RequestContext, loader
 from django.shortcuts import get_object_or_404, render
-import datetime
-from home.models import Text
+from datetime import date, timedelta
+from home.models import Text, Event
 # Create your views here.
 
 
 def index(request):
     announcements = Text.objects.filter(
         text_type='announcement',
-        expiry_date__gte=datetime.date.today()
-        )
+        expiry_date__gte=date.today()
+    )
     blog_entries = Text.objects.filter(
         text_type='blog_article').order_by('-created_date')
     sidebar_choices = Text.objects.filter(
@@ -18,13 +18,12 @@ def index(request):
     content_texts = Text.objects.filter(
         text_type='content_text', section='home')
     upcoming_days = [
-        (
-            (datetime.datetime.today() + datetime.timedelta(idx)).strftime(
-                '%d.%m.%Y'),
-            WEEKDAYS[
-                (datetime.datetime.today() + datetime.timedelta(idx)).weekday()
-            ]
-        ) for idx in range(14)
+        {
+            'date': (date.today() + timedelta(idx)).strftime('%d.%m.%Y'),
+            'weekday': WEEKDAYS[(date.today() + timedelta(idx)).weekday()],
+            'events': Event.objects.filter(
+                event_date__date=date.today() + timedelta(idx))
+        } for idx in range(14)
     ]
 
     template = loader.get_template('home/index.html')
