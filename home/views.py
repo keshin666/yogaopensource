@@ -17,11 +17,32 @@ def index(request):
         text_type='sidebar_choice', section='home').order_by('id')
     content_texts = Text.objects.filter(
         text_type='content_text', section='home')
+    upcoming_days = [
+        (
+            (datetime.datetime.today() + datetime.timedelta(idx)).strftime(
+                '%d.%m.%Y'),
+            WEEKDAYS[
+                (datetime.datetime.today() + datetime.timedelta(idx)).weekday()
+            ]
+        ) for idx in range(14)
+    ]
+
     template = loader.get_template('home/index.html')
     context = RequestContext(request, {
         'content_texts': content_texts,
         'announcements': announcements,
         'blog_entries': blog_entries,
         'sidebar_choices': sidebar_choices,
+        'upcoming_days': upcoming_days,
     })
     return HttpResponse(template.render(context))
+
+WEEKDAYS = {
+    0: 'Montag',
+    1: 'Dienstag',
+    2: 'Mittwoch',
+    3: 'Donnerstag',
+    4: 'Freitag',
+    5: 'Samstag',
+    6: 'Sonntag'
+}

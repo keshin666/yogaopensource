@@ -16,6 +16,18 @@ class Announcement(models.Model):
         return self.text
 
 
+class Event(models.Model):
+    created_date = models.DateTimeField(auto_now_add=True)
+    name = models.CharField(max_length=255)
+    description = models.TextField(default=None, blank=True, null=True)
+    event_date = models.DateTimeField()
+    author = models.ForeignKey(User)
+    additional_data = models.TextField(default=None, blank=True, null=True)
+
+    def __str__(self):
+        return self.name + ' ' + self.event_date.strftime("%Y-%m-%d")
+
+
 class Text(models.Model):
     text_type = models.CharField(max_length=255)
     title = models.CharField(max_length=255)

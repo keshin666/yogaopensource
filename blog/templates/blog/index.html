@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
 {% block title %}Yoga-Artikel{% endblock title %}
 {% block sidebar %}
-<a href="#">sidebar missing</a>
+    {% for sidebar_choice in sidebar_choices %}
+        <a href="#{{ sidebar_choice.anchor }}">{{ sidebar_choice.text }}</a><br>
+    {% endfor %}
 {% endblock sidebar %}
 
 {% block content %}

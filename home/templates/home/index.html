@@ -12,7 +12,7 @@
         {{ content_text.render_text_markdown | safe}}
     {% endfor %}
 <span class="anchor", id="announcements"></span>
-<span class="general_title">Ankündigungen</span>
+<span class="general_title">Topaktuell</span>
 <div class="announcements_frame">
     {% if announcements %}
         {% for announcement in announcements %}
@@ -20,11 +20,20 @@
         {% endfor %}
     {% else %}
         <p>No Announcements.</p>
+        <p>Momentan nichts topaktuelles.</p>
     {% endif %}
 </div>
-<span class="anchor" id="next_events"></span>
-<span class="general_title" >Regelmäßige Yogastunden</span>  (angeleitet und selbstständig, Stand: 15.10.2016)
-<div class="class_overview_frame">
+
+<!-- HERE THE FORTNIGHTLY OVERVIEW OPANE -->
+
+<div class="fortnight_overview">
+    <span class="anchor" id="next_events"></span>
+    <span class="general_title" >14-Tage-Übersicht</span> <br>
+    <table>
+    {% for day in upcoming_days %}
+        <tr>{{ day }} <br></tr>
+    {% endfor %}
+    </table>
 </div>
 <span class="anchor" id="blog_examples"></span>
 <span class="general_title">Artikel im Blog</span>

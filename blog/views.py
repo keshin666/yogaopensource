@@ -9,6 +9,8 @@ from home.models import Text
 def index(request):
     blog_entries = Text.objects.filter(
         text_type='blog_article').order_by('-created_date')
+    sidebar_choices = Text.objects.filter(
+        text_type='sidebar_choice', section='blog').order_by('-id')
     template = loader.get_template('blog/index.html')
     context = RequestContext(request, {
         'blog_entries': blog_entries,
@@ -23,3 +25,4 @@ def view_blog_entry(request, blog_entry_id):
         'blog_entry': blog_entry,
         })
     return HttpResponse(template.render(context))
+
