@@ -151,7 +151,6 @@ a:visited {
 }
 
 .announcements_frame {
-    min-height: 208px;
     width: 90%;
     background-color: #06D6A0;
     word-wrap: break-word;
@@ -162,14 +161,24 @@ a:visited {
     margin-left: auto;
     margin-right: auto;
 }
+
 .fortnight_overview {
     word-wrap: break-word;
+    max-width: 700px;
+
 }
 
 table {
     border-style: none;
     border-width: 0;
     background-color: #06D6A0;
+    word-wrap: break-word;
+}
+
+td.event_table{
+    max-width: 500px;
+    word-wrap: break-word;
+
 }
 
 th {

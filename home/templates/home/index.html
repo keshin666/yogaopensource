@@ -24,26 +24,28 @@
     {% endif %}
 </div>
 
-<!-- HERE THE FORTNIGHTLY OVERVIEW OPANE -->
+<!-- HERE THE FORTNIGHTLY OVERVIEW PANE -->
 
-<div class="fortnight_overview">
+<div>
     <span class="anchor" id="next_events"></span>
     <span class="general_title" >14-Tage-Übersicht</span> <br>
-    <table>
+    <table class="fortnight_overview">
         <tr>
             <th>Wochentag</th>
             <th>Datum</th>
+            <th>Wann?</th>
             <th>Was?</th>
+            <th>Wo?</th>
         </tr>
     {% for day in upcoming_days %}
         <tr>
             <td>{{ day.weekday }}</td>
             <td>{{ day.date }} </td>
-            <td>
-                {% for event in day.events %}
-                    {{ event.name }}: {{ event.description }}
-                {% endfor %}
-            </td>
+            {% for event in day.events %}
+                <td>{{ event.event_date | date:"G:i" }} Uhr</td>
+                <td><b>{{ event.name }}</b>: {{ event.description }}</td>
+                <td>{{ event.venue }}</td>  
+            {% endfor %}
         </tr>
     {% endfor %}
     </table>

@@ -21,6 +21,10 @@ class Event(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField(default=None, blank=True, null=True)
     event_date = models.DateTimeField()
+    venue = models.CharField(max_length=255,
+                             default=None,
+                             blank=True,
+                             null=True)
     author = models.ForeignKey(User)
     additional_data = models.TextField(default=None, blank=True, null=True)
 
@@ -75,4 +79,5 @@ class Text(models.Model):
                         'markdown.extensions.tables',
                         'markdown.extensions.sane_lists',
                         'markdown.extensions.attr_list',
-                        'markdown.extensions.def_list'])
+                        'markdown.extensions.def_list',
+                        'markdown.extensions.footnotes'])
