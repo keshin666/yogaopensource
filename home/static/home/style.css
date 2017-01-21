@@ -5,11 +5,11 @@
     height: 40px;
     width: 100%;
     z-index: 10;
-    background-color: #FFFFFF;
+    background-color: #06D6A0;
     text-align: center;
     padding-top: 15px;
-    border-bottom-style: solid;
-    border-bottom-color: #FFFFFF;
+    border-bottom-style: none;
+    border-bottom-color: none;
     border-bottom-width: 10px;
     top: 0px;
 }
@@ -27,7 +27,7 @@
     transition: all 0.2s ease-in;
 }
 #navigation a:hover {
-    background-color: #06D6A0;
+    background-color: #FFFFFF;
 }
 #navigation a:active {
     background-color: #06D6A0;
@@ -43,6 +43,8 @@
 
 body {
     background-color: none;
+    background-image: url(background_from_duck_flyer.jpg);
+    background-attachment: fixed;
     text-align: left;
     font-family: helvetica;
 }
@@ -68,7 +70,7 @@ body {
     max-width: 700px;
     height: 100%;
     position: relative;
-    background-color: #FFFFFF;
+    background-color: none;
     margin: auto;
     top: 110px;
     word-wrap: break-word;
@@ -103,6 +105,7 @@ body {
     border-left-width: 3px;
     border-left-color: #D0D1D1;
     padding: 2px;
+    text-decoration: none;
 }
 
 #sidebar a:hover {
