@@ -31,6 +31,17 @@ class Event(models.Model):
     def __str__(self):
         return self.name + ' ' + self.event_date.strftime("%Y-%m-%d")
 
+    def render_description_markdown(self):
+        return markdown.markdown(
+            self.description,
+            safe_mode=True,
+            extensions=['markdown.extensions.nl2br',
+                        'markdown.extensions.tables',
+                        'markdown.extensions.sane_lists',
+                        'markdown.extensions.attr_list',
+                        'markdown.extensions.def_list',
+                        'markdown.extensions.footnotes'])
+
 
 class Text(models.Model):
     text_type = models.CharField(max_length=255)

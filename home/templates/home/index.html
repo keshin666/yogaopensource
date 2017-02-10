@@ -38,7 +38,7 @@
             <td>{{ day.date }} </td>
             {% for event in day.events %}
                 <td>{{ event.event_date | date:"G:i" }} Uhr</td>
-                <td><b>{{ event.name }}</b>: {{ event.description }}</td>
+                <td><b>{{ event.name }}</b>: {{ event.render_description_markdown }}</td>
                 <td>{{ event.venue }}</td>  
             {% endfor %}
         </tr>
