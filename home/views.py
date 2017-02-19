@@ -9,21 +9,21 @@ from home.models import Text, Event
 def index(request):
     announcements = Text.objects.filter(
         text_type='announcement',
-        expiry_date__gte=date.today()
+        F(expiry_date__gte=date.today()) | F(expiry_date__isnull=True)
     )
     blog_entries = Text.objects.filter(
         text_type='blog_article',
-        expiry_date__gte=date.today()
+        F(expiry_date__gte=date.today()) | F(expiry_date__isnull=True)
     ).order_by('-created_date')
     sidebar_choices = Text.objects.filter(
         text_type='sidebar_choice',
         section='home',
-        expiry_date__gte=date.today()
+        F(expiry_date__gte=date.today()) | F(expiry_date__isnull=True)
     ).order_by('id')
     content_texts = Text.objects.filter(
         text_type='content_text',
         section='home',
-        expiry_date__gte=date.today()
+        F(expiry_date__gte=date.today()) | F(expiry_date__isnull=True)
     )
     upcoming_days = [
         {
