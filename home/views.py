@@ -12,11 +12,19 @@ def index(request):
         expiry_date__gte=date.today()
     )
     blog_entries = Text.objects.filter(
-        text_type='blog_article').order_by('-created_date')
+        text_type='blog_article',
+        expiry_date__gte=date.today()
+    ).order_by('-created_date')
     sidebar_choices = Text.objects.filter(
-        text_type='sidebar_choice', section='home').order_by('id')
+        text_type='sidebar_choice',
+        section='home',
+        expiry_date__gte=date.today()
+    ).order_by('id')
     content_texts = Text.objects.filter(
-        text_type='content_text', section='home')
+        text_type='content_text',
+        section='home',
+        expiry_date__gte=date.today()
+    )
     upcoming_days = [
         {
             'date': (date.today() + timedelta(idx)).strftime('%d.%m.%Y'),
