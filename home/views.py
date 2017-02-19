@@ -1,29 +1,28 @@
 from django.http import HttpResponse
 from django.template import RequestContext, loader
 from django.shortcuts import get_object_or_404, render
+from django.db.models import Q
 from datetime import date, timedelta
 from home.models import Text, Event
 # Create your views here.
 
 
 def index(request):
-    announcements = Text.objects.filter(
-        text_type='announcement',
-        F(expiry_date__gte=date.today()) | F(expiry_date__isnull=True)
+    announcements = Text.objects.filter(text_type='announcement').exclude(
+        Q(expiry_date__lt=date.today()) & Q(expiry_date__isnull=False)
     )
-    blog_entries = Text.objects.filter(
-        text_type='blog_article',
-        F(expiry_date__gte=date.today()) | F(expiry_date__isnull=True)
+    blog_entries = Text.objects.filter(text_type='blog_article',).exclude(
+        Q(expiry_date__lt=date.today()) & Q(expiry_date__isnull=False)
     ).order_by('-created_date')
     sidebar_choices = Text.objects.filter(
         text_type='sidebar_choice',
-        section='home',
-        F(expiry_date__gte=date.today()) | F(expiry_date__isnull=True)
+        section='home').exclude(
+        Q(expiry_date__lt=date.today()) & Q(expiry_date__isnull=False)
     ).order_by('id')
     content_texts = Text.objects.filter(
         text_type='content_text',
-        section='home',
-        F(expiry_date__gte=date.today()) | F(expiry_date__isnull=True)
+        section='home').exclude(
+        Q(expiry_date__lt=date.today()) & Q(expiry_date__isnull=False)
     )
     upcoming_days = [
         {
