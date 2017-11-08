@@ -94,3 +94,6 @@ ENV/
 
 # markdown files
 *.mdown
+
+# mac file
+.DS_Store
